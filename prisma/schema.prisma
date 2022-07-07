@@ -9,3 +9,14 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+    id Int @default(autoincrement()) @id
+    username String
+    email String
+    password String
+    firstName String?
+    lastName String?
+
+    @@map("users")
+}
