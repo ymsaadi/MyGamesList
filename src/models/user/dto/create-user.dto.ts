@@ -1,4 +1,6 @@
 import { IsEmail, IsOptional, IsString } from 'class-validator';
+import { Transform } from 'class-transformer';
+import { encodePassword } from '../../../common/helpers';
 
 export class CreateUserDto {
     @IsString()
@@ -8,7 +10,8 @@ export class CreateUserDto {
     email: string;
 
     @IsString()
-    passport: string;
+    @Transform(({ value }) => encodePassword(value))
+    password: string;
 
     @IsOptional()
     @IsString()
