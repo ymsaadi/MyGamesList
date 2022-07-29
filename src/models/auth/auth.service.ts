@@ -37,7 +37,7 @@ export class AuthService {
         return result;
     }
 
-    async register(createUserDto: CreateUserDto): Promise<User> {
+    async register(createUserDto: CreateUserDto): Promise<Partial<User>> {
         return this.usersService.create(createUserDto);
     }
 
