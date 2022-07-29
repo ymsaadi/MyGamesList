@@ -5,6 +5,16 @@ import * as bcrypt from 'bcryptjs';
 import { CreateUserDto } from '../user/dto/create-user.dto';
 import { User } from '@prisma/client';
 
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace Express {
+        interface User {
+            id: number;
+            username: string;
+        }
+    }
+}
+
 @Injectable()
 export class AuthService {
     constructor(private readonly usersService: UserService, private readonly jwtService: JwtService) {
